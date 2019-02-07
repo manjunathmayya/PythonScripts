@@ -13,8 +13,8 @@ from win10toast import ToastNotifier
 import time
 
 def GetScore(link):
-    http_proxy  = "http://194.138.0.25:9400"
-    https_proxy = "https://194.138.0.25:9400"   
+    http_proxy  = "http://xxx.xxx.0.25:xxxx"
+    https_proxy = "https://xxx.xxx.0.25:xxxx"   
     
     proxyDict = { 
                   "http"  : http_proxy, 
