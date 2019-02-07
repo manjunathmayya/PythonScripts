@@ -1,13 +1,7 @@
-#import webbrowser
 import requests
 from lxml.html import fromstring
-#import tkinter as tk
-#from tkinter import ttk
 import wx
-#from tkinter import *
 import winsound 
-#webbrowser.open('https://www.google.co.in/maps/place/united states of america')
-
 
 def GetScore(link):
     http_proxy  = "http://194.138.0.25:9400"
@@ -31,17 +25,6 @@ def GetScore(link):
     score = tree.findtext('.//title')
     return score
 
-
-#win = tk.Tk()
-#matchScore = GetScore()
-#win.title('Score')    
-#ttk.Label(win, text = matchScore).grid(column =0, row = 0)
-#win.mainloop()
-
-
-
-
- 
 class MyForm(wx.Frame):
  
     def __init__(self):
@@ -114,8 +97,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
