@@ -8,21 +8,20 @@ Ex URL : 'http://www.espncricinfo.com/series/8726/game/1157486/eastern-province-
 import requests
 from lxml.html import fromstring
 import wx
-import winsound 
+#import winsound 
+from win10toast import ToastNotifier
+import time
 
 def GetScore(link):
     http_proxy  = "http://194.138.0.25:9400"
-    https_proxy = "https://194.138.0.25:9400"
-    
+    https_proxy = "https://194.138.0.25:9400"   
     
     proxyDict = { 
                   "http"  : http_proxy, 
                   "https" : https_proxy,               
-                }
-    
-    s = requests.Session()
-    #s.proxies = {"http://proxyconf-aae-in.siemens.co.in:81/proxyin.pac/"}
-    s.proxies = proxyDict 
+                }    
+    s = requests.Session()        
+#    s.proxies = proxyDict 
     
     if link == '':
         link = 'http://www.espncricinfo.com/series/8044/game/1152562/hobart-hurricanes-vs-melbourne-renegades-52nd-match-big-bash-league-2018-19' 
@@ -32,6 +31,16 @@ def GetScore(link):
     score = tree.findtext('.//title')
     return score
 
+
+def ShowNotification(title, score, delay =2):
+    toaster = ToastNotifier()
+    toaster.show_toast(title,
+               score,
+               icon_path=None,
+               duration=delay,
+               threaded=True)
+    while toaster.notification_active(): time.sleep(0.1)
+ 
 class MyForm(wx.Frame):
  
     def __init__(self):
@@ -41,15 +50,12 @@ class MyForm(wx.Frame):
         panel = wx.Panel(self, wx.ID_ANY)
  
         self.timer = wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.update, self.timer)
- 
+        self.Bind(wx.EVT_TIMER, self.update, self.timer) 
         self.toggleBtn = wx.Button(panel, wx.ID_ANY, "Start")
-        self.toggleBtn.Bind(wx.EVT_BUTTON, self.onToggle)
-        
+        self.toggleBtn.Bind(wx.EVT_BUTTON, self.onToggle)        
         self.linkText = wx.TextCtrl(panel)
         
-        hbox = wx.BoxSizer(wx.HORIZONTAL)
-        
+        hbox = wx.BoxSizer(wx.HORIZONTAL)        
         panel.SetSizer(hbox)
         
         hbox.Add(self.linkText, 4)
@@ -86,11 +92,11 @@ class MyForm(wx.Frame):
         Wickets = score.split('/')[1]
         
         if (int(Runs)-int(self.PreviousRuns)) >= 4:
-            self.Iconize(False)
+            ShowNotification('Boundary !!!',self.score)
         
         if int(Wickets) - int(self.PreviousWickets) > 0:            
-            self.Iconize(False)        
-            winsound.Beep(2500, 500)
+            ShowNotification('Wicket!!!',self.score)      
+#            winsound.Beep(2500, 500)
         
         self.PreviousRuns = Runs;
         self.PreviousWickets = Wickets;        
