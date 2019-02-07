@@ -1,3 +1,10 @@
+'''
+Parse cricket score and notify if a wicket falls or on boundary
+
+Run the script and Enter URL from cricinfo in the text box provided and press start button.
+Ex URL : 'http://www.espncricinfo.com/series/8726/game/1157486/eastern-province-vs-boland-pool-a-csa-3-day-provincial-cup-2018-19'
+'''
+
 import requests
 from lxml.html import fromstring
 import wx
