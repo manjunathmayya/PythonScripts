@@ -1,3 +1,7 @@
+''' Usage 
+python sendEmailUsingOutlook.py -e xxx@gmail.com -s "Subject of email" -m "Email Message"
+'''
+
 import win32com.client as win32
 import argparse
 
@@ -14,7 +18,7 @@ def SendEmail(emailAddress, subject, message):
     mail.Send()
 
 
-
+#Get arguments from user.
 parser = argparse.ArgumentParser()
 parser.add_argument(
     '--emailAddress',
