@@ -3,7 +3,7 @@ This tool is basically a multiline clipboard.
 
 It copies and displays multiple texts in a list.
 
-Using this, multiple text copies can be viewed and on clicking any line, text of the line is automatically copied to
+Using this, multiple text copies can be viewed. And on clicking any line, text of the line is automatically copied to
 clipboard. Just paste it in the required place, where you want to paste it!!
 
 '''
