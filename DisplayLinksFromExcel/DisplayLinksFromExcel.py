@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jan 30 00:27:34 2019
-
-@author: ic014090
+This script opens and displays the links in Links.csv file in form of html.
+After running this script, type localhost:5000 in web browser, links will be displayed
+Also typing ipaddress:5000 in browser will also display the links.
 """
 import pandas as pd
 from flask import Flask, render_template
