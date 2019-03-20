@@ -3,7 +3,7 @@ This tool is basically a multiline clipboard.
 
 It copies and displays multiple texts in a list.
 
-Using this, multiple text copies can be viewed. And on clicking any line, text of the line is automatically copied to
+Using this, multiple text copies can be viewed and on clicking any line, text of the line is automatically copied to
 clipboard. Just paste it in the required place, where you want to paste it!!
 
 '''
@@ -70,7 +70,7 @@ class ClipboardCopierUI(wx.Frame):
 
         panel.SetSizer(hbox)
 
-        self.SetTitle('Clipboardcopier')
+        self.SetTitle('Clipboard Manager')
 
         #List to hold clipboard values
         self.clipboardValue = []
@@ -92,7 +92,7 @@ class ClipboardCopierUI(wx.Frame):
     def Start(self, event):
         if pyperclip.paste() not in self.clipboardValue:
             self.clipboardValue.append(pyperclip.paste())                
-        self.timer.Start(3000)
+        self.timer.Start(100)
 
     def OnstopButton(self, event):
         self.timer.Stop()
