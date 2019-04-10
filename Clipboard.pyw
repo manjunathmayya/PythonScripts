@@ -1,5 +1,5 @@
 '''
-This tool is basically a multiline clipboard.
+This tool is a multiline clipboard.
 
 It copies and displays multiple texts in a list.
 
