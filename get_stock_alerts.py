@@ -1,9 +1,35 @@
+'''
+Get notifications when the selected stock goes above or below selected percentage.
+This script also shows the Profit made based on the buy/sell share price and quantity.
+Use symbols from yahoo finance website (https://in.finance.yahoo.com/)
+
+Sample usage:
+
+For a buy order: 
+    get_stock_alerts.py -s YESBANK.NS -pr 140.0 -q 10 -p 0.02
+
+For a sell order:
+    get_stock_alerts.py -s YESBANK.NS -pr 135.0 -q 10 -p 0.02 -o sell 
+
+Stock analysis can also be done.
+
+    -> To get balance sheet, 
+    get_stock_alerts.py -s YESBANK.NS -i balance
+
+    -> To get income expenses, 
+    get_stock_alerts.py -s YESBANK.NS -i income
+    
+    -> Check information argument for further options
+
+
+'''
+
+
 import time,sys
 from yahoo_fin import stock_info as si
 from numpy import around
 from win10toast import ToastNotifier
 import pprint as pp
-
 import argparse
 
 parser = argparse.ArgumentParser()
@@ -120,7 +146,6 @@ while True:
     else:
         print('Profit : ',profit)
     
-    #        YESBANK.NS
     change = abs(100*(float(previous_price)-float(current_price))/float(previous_price) )
     
     if  change >= float(input_arguments.percent):
