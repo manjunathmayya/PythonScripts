@@ -1,3 +1,19 @@
+'''
+This script runs an infinite loop, with a delay of 5 seconds for between iterations, waiting for our voice. 
+If required phrases are found within these 5 seconds, corresponding actions are done.
+I found 5 seconds as the optimum value, which can be changed ofcourse, based on your needs.
+
+Currently, the script does 2 things. 
+1. Open selected applications 
+2. Search your entire computer for required files.
+    For this to work, we need 'Everything' tool from https://www.voidtools.com/.
+    Using its command line exe (EX.exe), search results are displayed in a command prompt.
+    
+Many more features can be added to this.    
+
+'''
+
+
 import speech_recognition as sr
 import os
 
@@ -29,10 +45,6 @@ while True:
                 os.system("start devenv.exe")
             if 'virtual machine' in text:
                 os.system("start vmplayer.exe")  
-            if 'rhapsody' in text:
-                path = "C:\Program Files (x86)\ibm\Rational\Rhapsody\8.0"
-                os.chdir(path)
-                os.system("start rhapsody.exe") 
             if 'spider' in text:
                 os.system("start spyder") 
             if 'word' in text:
