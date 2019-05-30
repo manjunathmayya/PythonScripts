@@ -17,7 +17,6 @@ while True:
         # to use another API key, use `r.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
         # instead of `r.recognize_google(audio)`
         
-#        text = r.recognize_google(audio, key = "AIzaSyAJgD86uc3HMf46vIO_2Z-gGj-1TJv3Uh0").lower()
         text = r.recognize_google(audio).lower()
         
         if 'open' in text or 'start' in text:
